@@ -66,8 +66,8 @@ const AddTimetableModal = ({
             >
               <option value="">Select Branch</option>
               {branches?.map((b) => (
-                <option key={b._id} value={b._id}>
-                  {b.name}
+                <option key={b?._id} value={b?._id}>
+                  {b?.name || "Unknown Branch"}
                 </option>
               ))}
             </select>
@@ -289,7 +289,7 @@ const Timetable = () => {
                     <MdLink />
                   </a>
                 </td>
-                <td className="py-4 px-6">{item.branch.name}</td>
+                <td className="py-4 px-6">{item.branch?.name || "N/A"}</td>
                 <td className="py-4 px-6">{item.semester}</td>
                 <td className="py-4 px-6">
                   {new Date(item.createdAt).toLocaleDateString()}

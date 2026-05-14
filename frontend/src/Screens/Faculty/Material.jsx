@@ -203,9 +203,9 @@ const Material = () => {
     setEditingMaterial(material);
     setFormData({
       title: material.title,
-      subject: material.subject._id,
+      subject: material.subject?._id || "",
       semester: material.semester,
-      branch: material.branch._id,
+      branch: material.branch?._id || "",
       type: material.type,
     });
     setShowModal(true);
@@ -252,9 +252,9 @@ const Material = () => {
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All Subjects</option>
-              {subjects.map((subject) => (
-                <option key={subject._id} value={subject._id}>
-                  {subject.name}
+              {subjects && subjects.map((subject) => (
+                <option key={subject?._id} value={subject?._id}>
+                  {subject?.name || "Unknown Subject"}
                 </option>
               ))}
             </select>
@@ -271,9 +271,9 @@ const Material = () => {
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">All Branches</option>
-              {branches.map((branch) => (
-                <option key={branch._id} value={branch._id}>
-                  {branch.name}
+              {branches && branches.map((branch) => (
+                <option key={branch?._id} value={branch?._id}>
+                  {branch?.name || "Unknown Branch"}
                 </option>
               ))}
             </select>
@@ -353,9 +353,9 @@ const Material = () => {
                     </CustomButton>
                   </td>
                   <td className="py-4 px-6">{material.title}</td>
-                  <td className="py-4 px-6">{material.subject.name}</td>
+                  <td className="py-4 px-6">{material.subject?.name || "N/A"}</td>
                   <td className="py-4 px-6">{material.semester}</td>
-                  <td className="py-4 px-6">{material.branch.name}</td>
+                  <td className="py-4 px-6">{material.branch?.name || "N/A"}</td>
                   <td className="py-4 px-6 capitalize">{material.type}</td>
                   <td className="py-4 px-6">
                     <div className="flex gap-4">
@@ -430,9 +430,9 @@ const Material = () => {
                     required
                   >
                     <option value="">Select Subject</option>
-                    {subjects.map((subject) => (
-                      <option key={subject._id} value={subject._id}>
-                        {subject.name}
+                    {subjects && subjects.map((subject) => (
+                      <option key={subject?._id} value={subject?._id}>
+                        {subject?.name || "Unknown Subject"}
                       </option>
                     ))}
                   </select>
@@ -450,9 +450,9 @@ const Material = () => {
                     required
                   >
                     <option value="">Select Branch</option>
-                    {branches.map((branch) => (
-                      <option key={branch._id} value={branch._id}>
-                        {branch.name}
+                    {branches && branches.map((branch) => (
+                      <option key={branch?._id} value={branch?._id}>
+                        {branch?.name || "Unknown Branch"}
                       </option>
                     ))}
                   </select>
